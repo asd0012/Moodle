@@ -1,0 +1,7 @@
+{
+  "name": "KiwiLearner Moodle Dev",
+  "image": "mcr.microsoft.com/devcontainers/php:8",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git unzip php-sqlite3 php-xml php-curl php-gd php-zip php-intl php-mbstring php-soap && git clone --branch MOODLE_401_STABLE https://github.com/moodle/moodle.git /workspaces/moodle && mkdir -p /workspaces/moodledata",
+  "forwardPorts": [8080],
+  "portsAttributes": { "8080": { "label": "Moodle" } }
+}
