@@ -1,7 +1,6 @@
 {
-  "name": "KiwiLearner Moodle Dev",
+  "name": "Moodle Dev",
   "image": "mcr.microsoft.com/devcontainers/php:8.2-bookworm",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git unzip php-sqlite3 php-xml php-curl php-gd php-zip php-intl php-mbstring php-soap && git clone --branch MOODLE_401_STABLE https://github.com/moodle/moodle.git /workspaces/moodle && mkdir -p /workspaces/moodledata",
-  "forwardPorts": [8080],
-  "portsAttributes": { "8080": { "label": "Moodle" } }
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y mariadb-server php-mysql unzip git && sudo service mariadb start && sudo mysql -e \"CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE USER 'moodle'@'localhost' IDENTIFIED BY 'moodle'; GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost'; FLUSH PRIVILEGES;\" && mkdir -p /workspaces/moodledata",
+  "forwardPorts": [8080]
 }
