@@ -1,6 +1,6 @@
 {
-  "name": "Moodle Dev",
+  "name": "Moodle Dev (PHP 8.2 + MariaDB)",
   "image": "mcr.microsoft.com/devcontainers/php:8.2-bookworm",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y mariadb-server php-mysql unzip git && sudo service mariadb start && sudo mysql -e \"CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE USER 'moodle'@'localhost' IDENTIFIED BY 'moodle'; GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost'; FLUSH PRIVILEGES;\" && mkdir -p /workspaces/moodledata",
-  "forwardPorts": [8080]
+  "forwardPorts": [8080],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y mariadb-server php-mysql git unzip && sudo service mariadb start && sudo mysql -e \"CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE USER 'moodle'@'localhost' IDENTIFIED BY 'moodle'; GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost'; FLUSH PRIVILEGES;\" && mkdir -p /workspaces/moodledata"
 }
